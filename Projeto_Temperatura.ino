@@ -35,8 +35,7 @@ void setup()
     Serial.println(resetResponse);
     
     // Conectar à rede Wi-Fi
-    String wifiCmd = "AT+CWJAP=\"Tek Fibra - Roberto\",\"1234509876\"\r\n";
-    //String wifiCmd = "AT+CWJAP=\"WIFI-IOT\",\"\"\r\n";
+    String wifiCmd = "AT+CWJAP=\"WIFI-IOT\",\" \"\r\n";
     String response = sendData(wifiCmd, 5000, DEBUG);
     delay(5000);
 
