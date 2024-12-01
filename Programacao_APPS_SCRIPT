@@ -1,0 +1,15 @@
+function doGet(e) {
+    Logger.log(e); // Registra o objeto e para depuração
+
+    // Verifica se o parâmetro 'temp' existe
+    if (typeof e === 'undefined' || !e.parameter.temp) {
+        Logger.log("No data received"); // Log para falha
+        return ContentService.createTextOutput("No data received"); // Retorna uma resposta se não houver dados
+    }
+
+    var temp = e.parameter.temp; // Obtém o valor do parâmetro
+    var sheet = SpreadsheetApp.openById("1NV-GnnUgnFkVoJU8u8g31VnO0naERbSPpvKhdRgMpdc").getActiveSheet();
+    sheet.appendRow([new Date(), temp]); // Adiciona data e temperatura à planilha
+    Logger.log("Data added: " + temp); // Log para sucesso
+    return ContentService.createTextOutput("Data added"); // Resposta de sucesso
+}
